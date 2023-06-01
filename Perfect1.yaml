@@ -1,0 +1,7 @@
+# conda env create -f environment.yaml
+name: Perfect1
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - scipy
