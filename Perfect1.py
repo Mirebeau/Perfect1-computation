@@ -59,21 +59,15 @@ def Voronoi(D,maxiter=100):
 	assert np.allclose(val,np.sum(Dold*Mopt))
 	return Mopt,(i,g)
 
-def cofactors(A):
+def cross(A):
 	"""
-	Compute the matrix of cofactors. Also works if determinant vanishes. 
-	Source : https://stackoverflow.com/a/58123914 
-	(Modified to address several matrices simultaneously, and to take correctly into account the 
-	determinants of U and Vt.)
+	Compute the generalized cross product. 
+	A is a matrix of shape (n,n-1,...), representing a family of n-1 vectors.
 	"""
-	U,sigma,Vt = np.linalg.svd(A)
-	N = sigma.shape[-1]
-	g = np.tile(sigma,N)
-	g[...,::(N+1)] = 1 # The computation of G from g could be optimized using cumprod
-	G = np.product(np.reshape(g,(*g.shape[:-1],N,N)),-1)[...,np.newaxis] * np.eye(N)
-	return (U @ G @ Vt) * (np.linalg.det(U)*np.linalg.det(Vt))[...,np.newaxis,np.newaxis]
+	return np.array([(-1)**i*
+		np.linalg.det(np.moveaxis(np.delete(A,i,axis=0),(0,1),(-2,-1))) for i in range(len(A))])
 
-def Perfect1(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None):
+def Perfect1_rev(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None,in_perfect1_tests=None):
 	"""
 	Compute the set Perfect1(M0), the where M0 is a reference perfect form. It is defined in
 	Bonnans, Bonnet, Mirebeau, Monotone discretization of anisotropic differential operators 
@@ -83,16 +77,11 @@ def Perfect1(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None):
 	if linprog_kwargs is None: linprog_kwargs = dict()
 	Ryskov_data = Ryskov_load(ndim)
 	# Construct the symmetric matrices DE associated to all subsets of active constraints.
-	DE = outer_self(Ryskov_data[iref].Ξ)
-	D0 = np.linalg.inv(np.sum(DE,axis=-1)) 
-	parts = np.array(list(itertools.product((0,1),repeat=DE.shape[-1]))).T
-	DE = np.sum(DE[...,np.newaxis]*parts,axis=2)
-
-	# Compute the co-factor matrix 
-	cDE = np.moveaxis(cofactors(np.moveaxis(DE,-1,0)),0,-1).round()
-	assert np.allclose( dot(cDE,DE), # Validation : A*adj(A) = det(A)Id
-		np.eye(ndim)[...,np.newaxis]*np.linalg.det(np.moveaxis(DE,-1,0)).round())
-	cDE = cDE[...,np.any(cDE,axis=(0,1))] # Eliminate zero matrices.
+	Ξ = Ryskov_data[iref].Ξ
+	E = np.array(list(itertools.combinations(range(Ξ.shape[1]),ndim-1))).T
+	E = cross(Ξ[:,E])
+	E = E[:,np.any(E,axis=0)]
+	D0 = outer_self(E).sum(axis=-1)
 	
 	Mlcm = np.lcm.reduce([x.M[0,0] for x in Ryskov_data]) # Normalize the minimal value
 	Ms = np.stack([x.M*Mlcm/x.M[0,0] for x in Ryskov_data],axis=-1).round().astype(int) 
@@ -116,10 +105,9 @@ def Perfect1(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None):
 		data = Ryskov_data[i]
 		neigh_M = dot_AtDA(Ms[...,data.neigh_i],dot(data.neigh_g,g))
 		# Constraint Tr(D(μ) M) <= Tr(D(μ) M') for all neighbors M' of M is implemented as Ax<=0
-		A = np.sum(cDE[:,:,np.newaxis,:]*neigh_M[:,:,:,np.newaxis],axis=(0,1))
-		A = np.sum(cDE*M[:,:,np.newaxis],axis=(0,1)) - A
+		A = norm2_AV(M,E) - norm2_AV(neigh_M[:,:,:,np.newaxis],E[:,np.newaxis,:])
 		b = np.zeros(neigh_M.shape[-1])
-		c = np.ones(cDE.shape[-1]) # Arbitrary objective function
+		c = np.ones(E.shape[-1]) # Arbitrary objective function
 		# We look for a solution x with positive coefficients x>0. By homogeneity, we can look for x>=1
 		res = linprog(c,A,b,bounds=(1,None),**linprog_kwargs) 
 		# Status : 0 -> feasible, 2 -> unfeasible. 
@@ -130,6 +118,13 @@ def Perfect1(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None):
 		print(f"Linear program found status {res['status']} for \n{M}")
 		if verb: print(f"and result {res}")
 		return res['status']==0
+
+	if in_perfect1_tests is not None:
+		if isinstance(in_perfect1_tests,tuple) and len(in_perfect1_tests)==2:
+			in_perfect1_tests = [in_perfect1_tests]
+		print("Testing data : ",in_perfect1_tests)
+		print([in_perfect1(i,g) for (i,g) in in_perfect1_tests])
+		return None,None,None
 
 	# Compute Perfect1 iteratively, keeping only a representative of each class.
 	_,(i0,g0) = Voronoi(D0); g0 = g0.astype(int)
@@ -167,6 +162,7 @@ def Perfect1(ndim,iref,retest=False,verbosity=1,linprog_kwargs=None):
 		f"equivalence classes of cardinality {perfect1_full_n} modulo isometries of {Ryskov_data[iref].name}")
 	return perfect1,perfect1_full,lps
 
+
 #{'A2':(2,0),'A3':(3,0),'D4':(4,0),'A4':(4,1),'D5':(5,0),'A5':(5,1),'A50':(5,2),'phi0':(6,0),
 if __name__ == "__main__":
 	if len(sys.argv)<=1:
@@ -181,12 +177,12 @@ if __name__ == "__main__":
 
 	d = int(sys.argv[1]) 
 	i = int(sys.argv[2]) if d>=4 else 0
-	if len(sys.argv)>3:
-		import ast
-		linprog_kwargs = ast.literal_eval(sys.argv[3])
-	else: linprog_kwargs = None
-
-	p1,p1f,lps = Perfect1(d,i,verbosity=0,linprog_kwargs=linprog_kwargs)
+	import ast
+	linprog_kwargs = None if len(sys.argv)<=3 else ast.literal_eval(sys.argv[3])
+	in_perfect1_tests = None if len(sys.argv)<=4 else ast.literal_eval(sys.argv[4])
+	
+	p1,p1f,lps = Perfect1_rev(d,i,verbosity=0,
+		linprog_kwargs=linprog_kwargs,in_perfect1_tests=in_perfect1_tests)
 	print(f"Representatives of Perfect1 modulo isometries : {p1}")
 #	print([np.moveaxis(x,-1,0) for x in p1f]) # Show all elements
 
