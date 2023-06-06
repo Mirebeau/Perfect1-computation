@@ -1,3 +1,6 @@
+# Copyright 2023 Jean-Marie Mirebeau, Centre Borelli, CNRS, University Paris-Saclay
+# Distributed WITHOUT ANY WARRANTY. Licensed under the Apache License, Version 2.0, see http://www.apache.org/licenses/LICENSE-2.0
+
 """
 This python file is meant to compute the set Perfect1(M0), defined in the paper  
 Monotone discretization of anisotropic differential operators using Voronoi’s first reduction
@@ -275,8 +278,8 @@ if __name__ == "__main__":
 	if len(sys.argv)<=1:
 		print("This program computes the set Perfect1(M0).\n"
 		"Inputs : \n "
-		"- d=2..4 the dimension. Use at your own risk in dimension d=5,6. \n"
-		"- (optional if d<=3) i=0..I(d) the index of the perfect form.\n" 
+		"- d=2..5 the dimension. Use at your own risk in dimension d=6. \n"
+		"- i=0..I(d) (optional if d<=3) the index of the perfect form.\n" 
 		" (Perfect forms ordering : A2, A3, D4,A4, D5,A5,A50, ϕ0,ϕ1,...,ϕ6)\n"
 		"- (optional) keyword arguments for scipy.optimize.linprog.\n"
 		"Example : python Perfect1.py 4 0 \"{'method':'highs-ds'}\"")
