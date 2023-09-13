@@ -1,0 +1,149 @@
+(agd-hfm_dev) jean-mariemirebeau@w-144-128 Perfect1-computation % python Decomp_of_perfect.py
+---------- Dimension d=2 ----------
+----------- A2 --------------
+((2, 1), (1, 2))
+Current perfect form : 1.0, best neighbor : 1.6666666666666665
+Opt for M^-1 is M : True 
+Traceback (most recent call last):
+  File "/Users/jean-mariemirebeau/Dropbox/Programmes/GithubM1/Bonnet/Perfect1-computation/Decomp_of_perfect.py", line 31, in <module>
+    offsets = offsets[true_offsets]
+IndexError: boolean index did not match indexed array along dimension 0; dimension is 2 but corresponding boolean dimension is 3
+(agd-hfm_dev) jean-mariemirebeau@w-144-128 Perfect1-computation % python Decomp_of_perfect.py
+---------- Dimension d=2 ----------
+----------- A2 --------------
+((2, 1), (1, 2))
+Current perfect form : 1.0, best neighbor : 1.6666666666666665
+Opt for M^-1 is M : True 
+[0.33333333 0.33333333 0.33333333] 1.0
+Minimal weight (positive implies eutactic) : 0.3333333333333333
+---------- Dimension d=3 ----------
+----------- A3 --------------
+((2, 1, 1), (1, 2, 1), (1, 1, 2))
+Current perfect form : 1.5, best neighbor : 1.75
+Opt for M^-1 is M : True 
+[0.25 0.25 0.25 0.25 0.25 0.25] 1.5
+Minimal weight (positive implies eutactic) : 0.25
+---------- Dimension d=4 ----------
+----------- D4 --------------
+((2, 1, 1, 0), (1, 2, 1, 1), (1, 1, 2, 1), (0, 1, 1, 2))
+Current perfect form : 2.0, best neighbor : 2.5
+Opt for M^-1 is M : True 
+[0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667] 2.0
+Minimal weight (positive implies eutactic) : 0.16666666666666663
+----------- A4 --------------
+((2, 1, 1, 1), (1, 2, 1, 1), (1, 1, 2, 1), (1, 1, 1, 2))
+Current perfect form : 2.2, best neighbor : 1.9999999999999998
+Current perfect form : 2.0, best neighbor : 2.1999999999999993
+Opt for M^-1 is M : True 
+[0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2] 2.0
+Minimal weight (positive implies eutactic) : 0.19999999999999982
+(agd-hfm_dev) jean-mariemirebeau@w-144-128 Perfect1-computation % python Decomp_of_perfect.py
+---------- Dimension d=2 ----------
+----------- A2 --------------
+((2, 1), (1, 2))
+Current perfect form : 1.0, best neighbor : 1.6666666666666665
+Opt for M^-1 is M : True 
+[0.33333333 0.33333333 0.33333333] 1.0
+Minimal weight (positive implies eutactic) : 0.3333333333333333
+---------- Dimension d=3 ----------
+----------- A3 --------------
+((2, 1, 1), (1, 2, 1), (1, 1, 2))
+Current perfect form : 1.5, best neighbor : 1.75
+Opt for M^-1 is M : True 
+[0.25 0.25 0.25 0.25 0.25 0.25] 1.5
+Minimal weight (positive implies eutactic) : 0.25
+---------- Dimension d=4 ----------
+----------- D4 --------------
+((2, 1, 1, 0), (1, 2, 1, 1), (1, 1, 2, 1), (0, 1, 1, 2))
+Current perfect form : 2.0, best neighbor : 2.5
+Opt for M^-1 is M : True 
+[0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667] 2.0
+Minimal weight (positive implies eutactic) : 0.16666666666666663
+----------- A4 --------------
+((2, 1, 1, 1), (1, 2, 1, 1), (1, 1, 2, 1), (1, 1, 1, 2))
+Current perfect form : 2.2, best neighbor : 1.9999999999999998
+Current perfect form : 2.0, best neighbor : 2.1999999999999993
+Opt for M^-1 is M : True 
+[0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2] 2.0
+Minimal weight (positive implies eutactic) : 0.19999999999999982
+---------- Dimension d=5 ----------
+----------- D5 --------------
+((2, 1, 1, 1, 0), (1, 2, 1, 1, 1), (1, 1, 2, 1, 1), (1, 1, 1, 2, 1), (0, 1, 1, 1, 2))
+Current perfect form : 2.5, best neighbor : 2.875
+Opt for M^-1 is M : True 
+[ 4.16333634e-17 -4.16333634e-17  2.50000000e-01  2.50000000e-01  2.50000000e-01  2.50000000e-01  2.50000000e-01  2.50000000e-01  2.50000000e-01  2.50000000e-01  0.00000000e+00  4.38854184e-17  2.50000000e-01  2.50000000e-01  0.00000000e+00] 2.5
+Minimal weight (positive implies eutactic) : -4.163336342344337e-17
+----------- A5 --------------
+((2, 1, 1, 1, 1), (1, 2, 1, 1, 1), (1, 1, 2, 1, 1), (1, 1, 1, 2, 1), (1, 1, 1, 1, 2))
+Current perfect form : 2.6666666666666665, best neighbor : 2.500000000000001
+Current perfect form : 2.5, best neighbor : 2.666666666666666
+Opt for M^-1 is M : True 
+[0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667 0.16666667] 2.4999999999999996
+Minimal weight (positive implies eutactic) : 0.16666666666666663
+----------- A50 --------------
+((4, 1, 1, -2, -2), (1, 4, 1, -2, -2), (1, 1, 4, -2, -2), (-2, -2, -2, 4, 1), (-2, -2, -2, 1, 4))
+Current perfect form : 5.333333333333333, best neighbor : 3.166666666666666
+Current perfect form : 3.1666666666666674, best neighbor : 2.1666666666666665
+Current perfect form : 2.1666666666666665, best neighbor : 1.4999999999999998
+Current perfect form : 1.5, best neighbor : 1.333333333333333
+Current perfect form : 1.3333333333333335, best neighbor : 1.25
+Current perfect form : 1.25, best neighbor : 1.333333333333333
+Opt for M^-1 is M : True 
+[0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333] 1.25
+Minimal weight (positive implies eutactic) : 0.08333333333333323
+---------- Dimension d=6 ----------
+----------- ϕ0 --------------
+((2, 1, 1, 1, 1, 1), (1, 2, 1, 1, 1, 1), (1, 1, 2, 1, 1, 1), (1, 1, 1, 2, 1, 1), (1, 1, 1, 1, 2, 1), (1, 1, 1, 1, 1, 2))
+Current perfect form : 3.0, best neighbor : 3.1428571428571415
+Opt for M^-1 is M : True 
+[0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714 0.14285714] 3.000000000000001
+Minimal weight (positive implies eutactic) : 0.1428571428571427
+----------- ϕ1 --------------
+((2, 0, 1, 1, 1, 1), (0, 2, 1, 1, 1, 1), (1, 1, 2, 1, 1, 1), (1, 1, 1, 2, 1, 1), (1, 1, 1, 1, 2, 1), (1, 1, 1, 1, 1, 2))
+Current perfect form : 4.0, best neighbor : 3.0
+Current perfect form : 3.0, best neighbor : 3.5
+Opt for M^-1 is M : True 
+[0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.5 0.5 0.5 0.5 0.5 0.5] 3.0
+Minimal weight (positive implies eutactic) : 0.0
+----------- ϕ2 --------------
+((2, 0, 0, 1, 1, 1), (0, 2, 1, 1, 1, 1), (0, 1, 2, 1, 1, 1), (1, 1, 1, 2, 1, 1), (1, 1, 1, 1, 2, 1), (1, 1, 1, 1, 1, 2))
+Current perfect form : 4.999999999999999, best neighbor : 3.9999999999999982
+Current perfect form : 3.999999999999999, best neighbor : 2.999999999999999
+Current perfect form : 2.999999999999999, best neighbor : 3.4999999999999982
+Opt for M^-1 is M : True 
+[0.00000000e+00 0.00000000e+00 2.22044605e-16 5.55111512e-16 5.55111512e-16 6.66133815e-16 7.77156117e-16 1.11022302e-15 1.11022302e-15 1.22124533e-15 1.55431223e-15 1.66533454e-15 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01 3.33333333e-01] 3.0
+Minimal weight (positive implies eutactic) : 0.0
+----------- ϕ3 --------------
+((4, 1, 2, 2, 2, 2), (1, 4, 2, 2, 2, 2), (2, 2, 4, 1, 2, 2), (2, 2, 1, 4, 2, 2), (2, 2, 2, 2, 4, 1), (2, 2, 2, 2, 1, 4))
+Current perfect form : 1.7692307692307696, best neighbor : 1.5897435897435903
+Current perfect form : 1.5897435897435899, best neighbor : 1.5000000000000004
+Current perfect form : 1.5000000000000004, best neighbor : 1.5384615384615388
+Opt for M^-1 is M : True 
+[0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.06410256 0.08974359 0.08974359 0.08974359] 1.5000000000000004
+Minimal weight (positive implies eutactic) : 0.06410256410256404
+----------- ϕ4 --------------
+((4, 1, 2, 2, 2, 2), (1, 4, 2, 2, 2, 2), (2, 2, 4, 1, 1, 1), (2, 2, 1, 4, 1, 1), (2, 2, 1, 1, 4, 1), (2, 2, 1, 1, 1, 4))
+Current perfect form : 3.0000000000000018, best neighbor : 2.0000000000000004
+Current perfect form : 2.0000000000000004, best neighbor : 1.5000000000000004
+Current perfect form : 1.5, best neighbor : 1.6666666666666652
+Opt for M^-1 is M : True 
+[9.02056208e-17 1.11022302e-16 2.22044605e-16 2.22044605e-16 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 8.33333333e-02 1.66666667e-01] 1.5
+Minimal weight (positive implies eutactic) : 9.020562075079394e-17
+----------- ϕ5 --------------
+((4, 1, 2, 2, 2, 2), (1, 4, 2, 2, 2, 2), (2, 2, 4, 1, 1, 2), (2, 2, 1, 4, 1, 2), (2, 2, 1, 1, 4, 2), (2, 2, 2, 2, 2, 4))
+Current perfect form : 2.000000000000001, best neighbor : 1.666666666666667
+Current perfect form : 1.666666666666667, best neighbor : 1.4999999999999998
+Current perfect form : 1.5, best neighbor : 1.4999999999999996
+Current perfect form : 1.4999999999999998, best neighbor : 1.4999999999999998
+Opt for M^-1 is M : True 
+[0.00000000e+00 0.00000000e+00 0.00000000e+00 2.77555756e-17 1.11022302e-16 2.22044605e-16 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 5.55555556e-02 1.66666667e-01 1.66666667e-01 1.66666667e-01 1.66666667e-01 1.66666667e-01 1.66666667e-01] 1.4999999999999947
+Minimal weight (positive implies eutactic) : 0.0
+----------- ϕ6 --------------
+((4, 0, 1, 2, 2, 1), (0, 4, 2, 2, 1, 2), (1, 2, 4, 2, 2, 2), (2, 2, 2, 4, 2, 1), (2, 1, 2, 2, 4, 0), (1, 2, 2, 1, 0, 4))
+Current perfect form : 2.0, best neighbor : 1.7142857142857142
+Current perfect form : 1.7142857142857144, best neighbor : 1.5714285714285712
+Current perfect form : 1.5714285714285712, best neighbor : 1.5
+Current perfect form : 1.5, best neighbor : 1.5714285714285712
+Opt for M^-1 is M : True 
+[0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857] 1.4999999999999996
+Minimal weight (positive implies eutactic) : 0.07142857142857129
