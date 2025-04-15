@@ -1,5 +1,5 @@
 # In this file, following the suggestion of a referee, we have a look at Voronoi's decomposition of 
-# (the inverses of) perfect forms. We recover that some are eutactic, but apart from this the 
+# (the inverses of) perfect forms. We recover that some are eutactic, but apart from that the 
 # experiment is not very conclusive. 
 
 # This file will not execute correctly on a computer other than mine (contrary to the rest of the
